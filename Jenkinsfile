@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    properties([pipelineTriggers([cron('* * * * *')])])
     stages{
         stage("git clone"){
             steps{
@@ -11,5 +12,11 @@ pipeline {
                 sh "cp -f index.html /var/www/html/index.html"
             }
         }
+        stage("test"){
+            steps{
+                sh "echo test"
+            
+            }
+        } 
     }
 }
